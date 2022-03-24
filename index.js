@@ -205,8 +205,19 @@ class Student extends Lambdasian{
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor(pmAttr){
+     super(pmAttr);
+     this.gradClassName = pmAttr.gradClassName;
+     this.favInstructor = pmAttr.favInstructor;
+
+   }
+   standUp(slack){
+     return `${this.name} announces to ${slack}, @channel standy times!`
+   }
+   debugsCode(student,subject){
+     return `${this.name} debugs ${student}'s code on ${subject}`;
+   }
 }
 
 /*
