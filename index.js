@@ -88,20 +88,20 @@ class Car {
     this.tank = this.tank + gallons;
     return this.tank;
   }
-  drive(distance){//something not quite right
-    this.odometer = this.odometer + distance;
-    
+  drive(distance){
     let totalTank = this.tank * this.milesPerGallon;
-    if(this.totalTank - this.distance < 0){
-      return [this.odometer, (`I ran out of fuel at ${this.odometer} miles!`)];
-    } else {
-      return [this.odometer,(this.totalTank - this.distance)];
-    }
     
-    
-
+    if(distance <= totalTank){
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - (distance/this.milesPerGallon);
+    } else{
+      this.odometer = this.odometer + totalTank;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    } 
   }
-}
+  }
+
 
 /*
   TASK 3
@@ -153,7 +153,7 @@ demo(subject){
   return `Today we are learning about ${subject}`;
 }
 grade(student,subject){
-  return `${student} receives a perfect score on ${subject}`;
+  return `${student.name} receives a perfect score on ${subject}`;
 }
 }
 
@@ -212,11 +212,11 @@ class ProjectManager extends Instructor{
      this.favInstructor = pmAttr.favInstructor;
 
    }
-   standUp(slack){
-     return `${this.name} announces to ${slack}, @channel standy times!`
+   standUp(channel){
+     return `${this.name} announces to ${channel}, @channel standy times!`
    }
    debugsCode(student,subject){
-     return `${this.name} debugs ${student}'s code on ${subject}`;
+     return `${this.name} debugs ${student.name}'s code on ${subject}`;
    }
 }
 
