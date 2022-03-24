@@ -77,7 +77,30 @@ class Person {
 */
 
 class Car {
-  
+  constructor(model,milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons;
+    return this.tank;
+  }
+  drive(distance){//something not quite right
+    this.odometer = this.odometer + distance;
+    
+    let totalTank = this.tank * this.milesPerGallon;
+    if(this.totalTank - this.distance < 0){
+      return [this.odometer, (`I ran out of fuel at ${this.odometer} miles!`)];
+    } else {
+      return [this.odometer,(this.totalTank - this.distance)];
+    }
+    
+    
+
+  }
 }
 
 /*
@@ -94,7 +117,14 @@ class Car {
 */
 
 class Lambdasian {
-  
+  constructor(arg){
+    this.name = arg.name;
+    this.age = arg.age;
+    this.location = arg.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
